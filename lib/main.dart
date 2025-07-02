@@ -15,7 +15,7 @@ void main() async {
   /////////////////////////////////////////////////
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(BlocsProviders());
+  runApp(const BlocsProviders());
 }
 
 class BlocsProviders extends StatelessWidget {
@@ -40,16 +40,47 @@ class BlocsProviders extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final GoRouter appRouter = context.watch<RouterSimpleCubit>().state;
+
+    // Estado inicial: mostrar splash durante X segundos
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Vodka',
       routerConfig: appRouter,
       theme: AppTheme(selectedColor: 0).theme(),
+      builder: (context, child) {
+        return FutureBuilder(
+          future: Future.delayed(Duration(seconds: 5)), // Duración del splash
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return child!;
+            } else {
+              return SplashScreen();
+            }
+          },
+        );
+      },
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFC1272E),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Image.asset('assets/splash/vdk.gif'),
+        ),
+      ),
     );
   }
 }

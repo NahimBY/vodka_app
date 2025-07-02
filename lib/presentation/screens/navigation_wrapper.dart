@@ -8,7 +8,7 @@ import 'package:vodka_app/config/theme/app_theme.dart';
 // import 'package:vodka_app/infrastructure/services/refresh_token_service.dart';
 // import 'package:vodka_app/infrastructure/services/token_service.dart';
 import 'package:vodka_app/presentation/screens/screens.dart';
-import 'package:vodka_app/widgets/customNavigationBar.dart';
+import 'package:vodka_app/widgets/shared/customNavigationBar.dart';
 import 'package:vodka_app/widgets/shared/show_about_dialog.dart';
 
 class NavigationWrapper extends StatelessWidget {
