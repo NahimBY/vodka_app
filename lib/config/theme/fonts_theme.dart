@@ -51,7 +51,37 @@ class AppFonts {
 
   static TextStyle headlineSemibold24 = GoogleFonts.montserrat(
     fontSize: 24,
-    fontWeight: FontWeight.w800,
+    fontWeight: FontWeight.w600,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle headlineSemibold20 = GoogleFonts.montserrat(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle headlineSemibold18 = GoogleFonts.montserrat(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle headlineSemibold16 = GoogleFonts.montserrat(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle headlineSemibold15 = GoogleFonts.montserrat(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle headlineSemibold14 = GoogleFonts.montserrat(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
     color: AppColors.customBlack,
   );
 
@@ -61,7 +91,37 @@ class AppFonts {
 
   static TextStyle bodytextMedium24 = GoogleFonts.montserrat(
     fontSize: 24,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextMedium20 = GoogleFonts.montserrat(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextMedium18 = GoogleFonts.montserrat(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextMedium16 = GoogleFonts.montserrat(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextMedium15 = GoogleFonts.montserrat(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextMedium14 = GoogleFonts.montserrat(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
     color: AppColors.customBlack,
   );
 
@@ -71,6 +131,36 @@ class AppFonts {
 
   static TextStyle bodytextRegular24 = GoogleFonts.montserrat(
     fontSize: 24,
+    fontWeight: FontWeight.normal,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextRegular20 = GoogleFonts.montserrat(
+    fontSize: 20,
+    fontWeight: FontWeight.normal,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextRegular18 = GoogleFonts.montserrat(
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextRegular16 = GoogleFonts.montserrat(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextRegular15 = GoogleFonts.montserrat(
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
+    color: AppColors.customBlack,
+  );
+
+  static TextStyle bodytextRegular14 = GoogleFonts.montserrat(
+    fontSize: 14,
     fontWeight: FontWeight.normal,
     color: AppColors.customBlack,
   );

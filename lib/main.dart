@@ -52,18 +52,18 @@ class MyApp extends StatelessWidget {
       title: 'Vodka',
       routerConfig: appRouter,
       theme: AppTheme(selectedColor: 0).theme(),
-      builder: (context, child) {
-        return FutureBuilder(
-          future: Future.delayed(Duration(seconds: 5)), // Duración del splash
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return child!;
-            } else {
-              return SplashScreen();
-            }
-          },
-        );
-      },
+      // builder: (context, child) {
+      //   return FutureBuilder(
+      //     future: Future.delayed(Duration(seconds: 6)), // Duración del splash
+      //     builder: (context, snapshot) {
+      //       if (snapshot.connectionState == ConnectionState.done) {
+      //         return child!;
+      //       } else {
+      //         return SplashScreen();
+      //       }
+      //     },
+      //   );
+      // },
     );
   }
 }
