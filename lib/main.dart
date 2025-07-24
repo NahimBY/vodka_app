@@ -5,6 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:vodka_app/config/router/app_router.dart';
 import 'package:vodka_app/config/router/cubit/navigation_cubit.dart';
 import 'package:vodka_app/config/theme/app_theme.dart';
+import 'package:vodka_app/infrastructure/datasources/authdb_datasource.dart';
+import 'package:vodka_app/infrastructure/repositories/auth_repository_impl.dart';
+import 'package:vodka_app/infrastructure/services/key_value_storage_service.dart';
+import 'package:vodka_app/presentation/screens/auth/cubit/auth_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +19,9 @@ void main() async {
   /////////////////////////////////////////////////
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await KeyValueStorageService.init();
+
   runApp(const BlocsProviders());
 }
 
@@ -25,8 +32,12 @@ class BlocsProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<AuthCubit>(
+          create:
+              (context) => AuthCubit(AuthRepositoryImpl(AuthdbDatasource())),
+        ),
         BlocProvider<RouterSimpleCubit>(
-          create: (context) => RouterSimpleCubit(initialRoute: '/'),
+          create: (context) => RouterSimpleCubit(initialRoute: '/login'),
         ),
         BlocProvider<NavigationCubit>(
           create:

@@ -13,60 +13,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   toolbarHeight: 80,
-      //   title:
-      //       const SizedBox.shrink(), // Lo reemplazamos por el contenido en flexibleSpace
-      //   flexibleSpace: Align(
-      //     alignment: Alignment.bottomCenter,
-      //     child: Padding(
-      //       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         crossAxisAlignment: CrossAxisAlignment.end,
-      //         children: [
-      //           // Tu título (logo)
-      //           Padding(
-      //             padding: const EdgeInsets.only(bottom: 10),
-      //             child: SizedBox(
-      //               width: 110,
-      //               child: Image.asset(
-      //                 'assets/logos/LogoVA.png',
-      //                 color: Colors.black,
-      //               ),
-      //             ),
-      //           ),
-
-      //           // Tus actions alineados también en bottom
-      //           Row(
-      //             crossAxisAlignment: CrossAxisAlignment.end,
-      //             children: [
-      //               IconButton(
-      //                 onPressed: () {},
-      //                 icon: HeroIcon(
-      //                   HeroIcons.calendar,
-      //                   style: HeroIconStyle.outline,
-      //                   color: Colors.black,
-      //                 ),
-      //                 constraints: BoxConstraints(),
-      //               ),
-      //               SizedBox(width: 10),
-      //               IconButton(
-      //                 onPressed: () {},
-      //                 icon: HeroIcon(
-      //                   HeroIcons.magnifyingGlass,
-      //                   style: HeroIconStyle.outline,
-      //                   color: Colors.black,
-      //                 ),
-      //                 constraints: BoxConstraints(),
-      //               ),
-      //             ],
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: Stack(
         children: [
           Padding(
@@ -76,15 +22,16 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
+                      left: 20,
+                      right: 20,
                       top: 20,
                       bottom: 5,
                     ),
                     child: Column(
                       children: [
                         MatchCard(
-                          cardTitle: 'Administrando',
+                          cardTitle: true,
+                          title: 'Administrando',
                           collapse: false,
                           itemCount: 1,
                         ),
@@ -92,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         SizedBox(height: 5),
@@ -103,15 +50,16 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
+                      left: 20,
+                      right: 20,
                       top: 5,
                       bottom: 115,
                     ),
                     child: Column(
                       children: [
                         MatchCard(
-                          cardTitle: 'Próximos partidos',
+                          cardTitle: true,
+                          title: 'Jornadas pendientes',
                           collapse: true,
                           itemCount: 10,
                         ),
@@ -123,6 +71,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           CustomAppBar(
+            transparentBg: false,
             logo: true,
             icon: true,
             customIcon1: HeroIcon(HeroIcons.calendar),

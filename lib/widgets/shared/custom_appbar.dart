@@ -3,6 +3,7 @@ import 'package:heroicons/heroicons.dart';
 import 'package:vodka_app/config/theme/app_theme.dart';
 
 class CustomAppBar extends StatelessWidget {
+  final bool transparentBg;
   final bool logo;
   final bool icon;
   final String? appbarTitle;
@@ -11,9 +12,10 @@ class CustomAppBar extends StatelessWidget {
 
   const CustomAppBar({
     super.key,
-    this.appbarTitle,
     required this.logo,
     required this.icon,
+    required this.transparentBg,
+    this.appbarTitle,
     this.customIcon1,
     this.customIcon2,
   });
@@ -24,10 +26,10 @@ class CustomAppBar extends StatelessWidget {
       height: 110,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: transparentBg ? Colors.transparent : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
+            color: transparentBg ? Colors.transparent : Colors.black12,
             offset: Offset(0, 5),
             blurRadius: 6,
           ),

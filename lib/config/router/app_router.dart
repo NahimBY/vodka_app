@@ -43,7 +43,7 @@ GoRouter createRouter(String initialLocation) => GoRouter(
 
 class RouterSimpleCubit extends Cubit<GoRouter> {
   RouterSimpleCubit({String? initialRoute})
-    : super(createRouter(initialRoute ?? '/inicio'));
+    : super(createRouter(initialRoute ?? '/login'));
 
   void goBack() {
     state.pop();

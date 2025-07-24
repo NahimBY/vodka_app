@@ -3,15 +3,16 @@ import 'package:heroicons/heroicons.dart';
 import 'package:vodka_app/config/theme/app_theme.dart';
 
 class MatchCard extends StatelessWidget {
-  final String cardTitle;
+  final String title;
+  final bool cardTitle;
   final bool collapse;
   final int itemCount;
 
   const MatchCard({
     super.key,
-    required this.cardTitle,
+    required this.title,
     required this.collapse,
-    required this.itemCount,
+    required this.itemCount, required this.cardTitle,
   });
 
   @override
@@ -34,7 +35,7 @@ class MatchCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(cardTitle, style: AppFonts.headlineSemibold16),
+                    Text(title, style: AppFonts.headlineSemibold16),
                     collapse
                         ? IconButton(
                           onPressed: () {},
@@ -44,7 +45,7 @@ class MatchCard extends StatelessWidget {
                             color: AppColors.icon1,
                           ),
                         )
-                        : SizedBox(height: 50),
+                        : SizedBox(height: 45),
                   ],
                 ),
               ),
