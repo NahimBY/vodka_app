@@ -625,7 +625,7 @@ packages:
     source: hosted
     version: "1.5.0"
   retrofit:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: retrofit
       sha256: "84d70114a5b6bae5f4c1302335f9cb610ebeb1b02023d5e7e87697aaff52926a"

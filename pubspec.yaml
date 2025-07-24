@@ -43,6 +43,7 @@ dependencies:
   heroicons: ^0.11.0
   jwt_decoder: ^2.0.1
   shared_preferences: ^2.5.3
+  retrofit: ^4.4.1
 
 dev_dependencies:
   retrofit_generator: ^9.1.3
