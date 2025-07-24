@@ -20,6 +20,7 @@ class AppTheme {
       useMaterial3: true,
       colorSchemeSeed: AppColors.palette[selectedColor],
       brightness: Brightness.light,
+      scaffoldBackgroundColor: AppColors.bgScreenColor,
       textTheme: GoogleFonts.montserratTextTheme(),
       appBarTheme: AppBarTheme(
         backgroundColor: const Color.fromRGBO(242, 242, 242, 1),
