@@ -7,20 +7,20 @@ GoRouter createRouter(String initialLocation) => GoRouter(
   initialLocation: initialLocation,
   routes: [
     GoRoute(
+      name: SplashScreen.name,
+      path: '/splash',
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      name: LoginScreen.name,
+      path: '/login',
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
       name: NavigationWrapper.name,
       path: '/',
       builder: (context, state) => const NavigationWrapper(),
       routes: [
-        GoRoute(
-          name: SplashScreen.name,
-          path: '/splash',
-          builder: (context, state) => const SplashScreen(),
-        ),
-        GoRoute(
-          name: LoginScreen.name,
-          path: 'login',
-          builder: (context, state) => const LoginScreen(),
-        ),
         GoRoute(
           name: NewScreen.name,
           path: 'nuevo',
@@ -43,7 +43,7 @@ GoRouter createRouter(String initialLocation) => GoRouter(
 
 class RouterSimpleCubit extends Cubit<GoRouter> {
   RouterSimpleCubit({String? initialRoute})
-    : super(createRouter(initialRoute ?? '/login'));
+    : super(createRouter(initialRoute ?? '/splash'));
 
   void goBack() {
     state.pop();
@@ -51,6 +51,14 @@ class RouterSimpleCubit extends Cubit<GoRouter> {
 
   void goWrapper() {
     state.go('/');
+  }
+
+  void goLogin() {
+    state.go('/login');
+  }
+
+  void goSplash() {
+    state.go('/splash');
   }
 
   void pushRoute(String value, {Object? extra}) {

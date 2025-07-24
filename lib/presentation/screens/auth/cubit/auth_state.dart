@@ -1,6 +1,3 @@
-import 'package:equatable/equatable.dart';
-import 'package:vodka_app/domain/entities/user.dart';
-
 enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
 
 class AuthState {
@@ -8,13 +5,13 @@ class AuthState {
   final String? token;
   final String? errorMessage;
   final Map<String, dynamic>? decodedToken;
-  final String? userId; // Agregar campos del usuario
+  final String? userId;
   final String? name;
   final String? email;
   final String? role;
 
   AuthState({
-    this.status = AuthStatus.unauthenticated,
+    this.status = AuthStatus.initial,
     this.token,
     this.errorMessage,
     this.decodedToken,
@@ -34,7 +31,7 @@ class AuthState {
     String? email,
     String? role,
   }) {
-    return AuthState(
+    final newState = AuthState(
       status: status ?? this.status,
       token: token ?? this.token,
       errorMessage: errorMessage ?? this.errorMessage,
@@ -44,5 +41,6 @@ class AuthState {
       email: email ?? this.email,
       role: role ?? this.role,
     );
+    return newState;
   }
 }

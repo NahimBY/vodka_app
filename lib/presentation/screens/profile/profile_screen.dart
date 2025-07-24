@@ -148,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
                         onTap: () {
                           context.read<AuthCubit>().logout();
                           if (context.mounted) {
-                            context.read<RouterSimpleCubit>().goRoute('login');
+                            context.read<RouterSimpleCubit>().goLogin();
                           }
                         },
                       ),
