@@ -37,7 +37,7 @@ class BlocsProviders extends StatelessWidget {
               (context) => AuthCubit(AuthRepositoryImpl(AuthdbDatasource())),
         ),
         BlocProvider<RouterSimpleCubit>(
-          create: (context) => RouterSimpleCubit(initialRoute: '/'),
+          create: (context) => RouterSimpleCubit(initialRoute: '/splash'),
         ),
         BlocProvider<NavigationCubit>(
           create:
@@ -45,7 +45,7 @@ class BlocsProviders extends StatelessWidget {
                   NavigationCubit(router: context.read<RouterSimpleCubit>()),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }
@@ -57,41 +57,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final GoRouter appRouter = context.watch<RouterSimpleCubit>().state;
 
-    // Estado inicial: mostrar splash durante X segundos
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Vodka',
       routerConfig: appRouter,
       theme: AppTheme(selectedColor: 0).theme(),
-      builder: (context, child) {
-        return FutureBuilder(
-          future: Future.delayed(Duration(seconds: 6)), // Duración del splash
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return child!;
-            } else {
-              return SplashScreen();
-            }
-          },
-        );
-      },
-    );
-  }
-}
-
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.customDarkRed,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Image.asset('assets/splash/vdk.gif'),
-        ),
-      ),
     );
   }
 }

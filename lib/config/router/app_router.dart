@@ -5,17 +5,17 @@ import 'package:vodka_app/presentation/screens/screens.dart';
 
 GoRouter createRouter(String initialLocation) => GoRouter(
   initialLocation: initialLocation,
-  // redirect: (context, state) {
-  //   final String path = state.uri.path;
-  //   final Map<String, String> params = state.uri.queryParameters;
-
-  // },
   routes: [
     GoRoute(
       name: NavigationWrapper.name,
       path: '/',
       builder: (context, state) => const NavigationWrapper(),
       routes: [
+        GoRoute(
+          name: SplashScreen.name,
+          path: '/splash',
+          builder: (context, state) => const SplashScreen(),
+        ),
         GoRoute(
           name: LoginScreen.name,
           path: 'login',
