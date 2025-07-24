@@ -37,7 +37,7 @@ class BlocsProviders extends StatelessWidget {
               (context) => AuthCubit(AuthRepositoryImpl(AuthdbDatasource())),
         ),
         BlocProvider<RouterSimpleCubit>(
-          create: (context) => RouterSimpleCubit(initialRoute: '/login'),
+          create: (context) => RouterSimpleCubit(initialRoute: '/'),
         ),
         BlocProvider<NavigationCubit>(
           create:
@@ -63,18 +63,18 @@ class MyApp extends StatelessWidget {
       title: 'Vodka',
       routerConfig: appRouter,
       theme: AppTheme(selectedColor: 0).theme(),
-      // builder: (context, child) {
-      //   return FutureBuilder(
-      //     future: Future.delayed(Duration(seconds: 6)), // Duración del splash
-      //     builder: (context, snapshot) {
-      //       if (snapshot.connectionState == ConnectionState.done) {
-      //         return child!;
-      //       } else {
-      //         return SplashScreen();
-      //       }
-      //     },
-      //   );
-      // },
+      builder: (context, child) {
+        return FutureBuilder(
+          future: Future.delayed(Duration(seconds: 6)), // Duración del splash
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return child!;
+            } else {
+              return SplashScreen();
+            }
+          },
+        );
+      },
     );
   }
 }
@@ -85,7 +85,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFC1272E),
+      backgroundColor: AppColors.customDarkRed,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),

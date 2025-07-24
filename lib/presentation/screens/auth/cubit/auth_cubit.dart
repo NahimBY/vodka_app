@@ -12,7 +12,41 @@ class AuthCubit extends Cubit<AuthState> {
   static const String emailKey = 'email';
   static const String roleKey = 'role';
 
-  AuthCubit(this._authRepository) : super(AuthState());
+  AuthCubit(this._authRepository) : super(AuthState()) {
+    checkStoredToken();
+  }
+
+  Future<void> checkStoredToken() async {
+    print('AUTH CUBIT: Checking stored token...');
+    emit(state.copyWith(status: AuthStatus.loading));
+
+    final token = KeyValueStorageService.getString(accessTokenKey);
+    print('AUTH CUBIT: Token found: $token');
+
+    if (token != null) {
+      final userId = KeyValueStorageService.getString(userIdKey);
+      final name = KeyValueStorageService.getString(nameKey);
+      final email = KeyValueStorageService.getString(emailKey);
+      final role = KeyValueStorageService.getString(roleKey);
+      print(
+        'AUTH CUBIT: Emitting authenticated state with userId: $userId, name: $name, email: $email, role: $role',
+      );
+
+      emit(
+        state.copyWith(
+          status: AuthStatus.authenticated,
+          token: token,
+          userId: userId,
+          name: name,
+          email: email,
+          role: role,
+        ),
+      );
+    } else {
+      print('AUTH CUBIT: No token found, emitting unauthenticated state');
+      emit(state.copyWith(status: AuthStatus.unauthenticated));
+    }
+  }
 
   Future<void> login(String email, String password) async {
     try {
@@ -59,7 +93,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   void handleLoginError(dynamic e) {
     String errorMessage;
-    print('AUTH CUBIT: $e');
     if (e.toString().contains("incorrectos")) {
       errorMessage = "Correo y/o contraseña incorrectos.";
     } else {
