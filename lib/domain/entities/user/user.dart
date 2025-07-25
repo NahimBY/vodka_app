@@ -7,10 +7,12 @@ class User {
   final int id;
   final String name;
   final String email;
-  final String? role;
+  final int? role;
 
   User({required this.id, required this.name, required this.email, this.role});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  String? get roleAsString => role?.toString();
 }

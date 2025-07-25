@@ -14,16 +14,13 @@ class AuthCubit extends Cubit<AuthState> {
   static const String roleKey = 'role';
 
   AuthCubit(this._authRepository) : super(AuthState()) {
-    // Ejecutar checkStoredToken inmediatamente
     WidgetsBinding.instance.addPostFrameCallback((_) {
       checkStoredToken();
     });
   }
 
   Future<void> checkStoredToken() async {
-    if (isClosed) {
-      return;
-    }
+    if (isClosed) return;
 
     emit(state.copyWith(status: AuthStatus.loading));
 
@@ -73,7 +70,6 @@ class AuthCubit extends Cubit<AuthState> {
 
       final response = await _authRepository.login(email, password);
 
-      // Guardar los datos del usuario y el token
       await Future.wait([
         KeyValueStorageService.setValue(accessTokenKey, response.token),
         KeyValueStorageService.setValue(userIdKey, response.id.toString()),
@@ -94,6 +90,7 @@ class AuthCubit extends Cubit<AuthState> {
           role: response.role,
         ),
       );
+
     } catch (e) {
       handleLoginError(e);
     }
@@ -105,15 +102,29 @@ class AuthCubit extends Cubit<AuthState> {
       KeyValueStorageService.remove(userIdKey),
       KeyValueStorageService.remove(nameKey),
       KeyValueStorageService.remove(emailKey),
+      KeyValueStorageService.remove(roleKey),
     ]);
 
     emit(AuthState(status: AuthStatus.unauthenticated));
   }
 
   void handleLoginError(dynamic e) {
+
     String errorMessage;
-    if (e.toString().contains("incorrectos")) {
+    final errorString = e.toString().toLowerCase();
+
+    if (errorString.contains("incorrectos") ||
+        errorString.contains("incorrect") ||
+        errorString.contains("invalid")) {
       errorMessage = "Correo y/o contraseña incorrectos.";
+    } else if (errorString.contains("connection") ||
+        errorString.contains("network") ||
+        errorString.contains("internet")) {
+      errorMessage = "Error de conexión. Verifica tu internet.";
+    } else if (errorString.contains("timeout")) {
+      errorMessage = "Tiempo de espera agotado. Intenta de nuevo.";
+    } else if (errorString.contains("server") || errorString.contains("500")) {
+      errorMessage = "Error del servidor. Intenta más tarde.";
     } else {
       errorMessage = "Ocurrió un error inesperado.";
     }

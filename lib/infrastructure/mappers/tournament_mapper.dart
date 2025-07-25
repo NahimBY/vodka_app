@@ -1,5 +1,5 @@
-import 'package:vodka_app/domain/entities/tournament.dart';
-import 'package:vodka_app/infrastructure/models/tournament_response.dart';
+import 'package:vodka_app/domain/entities/tournament/tournament.dart';
+import 'package:vodka_app/infrastructure/models/tournamentdb/tournament_response.dart';
 
 class TournamentMapper {
   static Tournament tournamentResponseToEntity(

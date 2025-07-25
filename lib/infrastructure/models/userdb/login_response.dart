@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:vodka_app/domain/entities/assing.dart';
-import 'package:vodka_app/domain/entities/user.dart';
+import 'package:vodka_app/domain/entities/assing/assing.dart';
+import 'package:vodka_app/domain/entities/user/user.dart';
 
 part 'login_response.g.dart';
 

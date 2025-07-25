@@ -1,5 +1,5 @@
 import 'package:vodka_app/domain/datasources/tournament_datasource.dart';
-import 'package:vodka_app/domain/entities/tournament.dart';
+import 'package:vodka_app/domain/entities/tournament/tournament.dart';
 import 'package:vodka_app/domain/repositories/tournament_repository.dart';
 
 class TournamentRepositoryImpl implements TournamentRepository {
