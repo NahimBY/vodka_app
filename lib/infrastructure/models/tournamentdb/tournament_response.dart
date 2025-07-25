@@ -1,8 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'tournament_response.g.dart';
-
-@JsonSerializable()
 class TournamentResponse {
   final int id;
   final String name;
@@ -17,7 +12,17 @@ class TournamentResponse {
   });
 
   factory TournamentResponse.fromJson(Map<String, dynamic> json) =>
-      _$TournamentResponseFromJson(json);
+      TournamentResponse(
+        id: json["id"],
+        name: json["name"],
+        emblem: json["emblem"],
+        status: json["status"],
+      );
 
-  Map<String, dynamic> toJson() => _$TournamentResponseToJson(this);
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "emblem": emblem,
+    "status": status,
+  };
 }

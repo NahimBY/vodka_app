@@ -1,13 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'user_response.g.dart';
-
-@JsonSerializable()
 class UserResponse {
   final int id;
   final String name;
   final String email;
-  final int? role;
+  final String? role;
 
   UserResponse({
     required this.id,
@@ -16,8 +11,10 @@ class UserResponse {
     this.role,
   });
 
-  factory UserResponse.fromJson(Map<String, dynamic> json) =>
-      _$UserResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserResponseToJson(this);
+  factory UserResponse.fromJson(Map<String, dynamic> json) => UserResponse(
+    id: json["id"],
+    name: json["name"],
+    email: json["email"],
+    role: json["role"],
+  );
 }
